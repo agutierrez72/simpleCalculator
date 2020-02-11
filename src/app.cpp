@@ -1,5 +1,6 @@
 #include <server.h>
 #include <string>
+#include <mymath.h>
 
 using namespace ucm;
 
@@ -32,7 +33,7 @@ int main(int argc, char** argv){
             int x = std::stoi(x_string);
             int y = std::stoi(y_string);
 
-            int ans = x + y;
+            int ans = add(x, y);
 
             std::string ans_string = std::to_string(ans);
 
