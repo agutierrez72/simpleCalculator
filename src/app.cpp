@@ -8,6 +8,8 @@ int main(int argc, char** argv){
 
     Server server(argc, argv);
 
+    server.renderHTML("/", "index.html");
+
     server.route("/sayHello", [&](const request& req, response& res){
         res.sendHTML("Hello World");
     });
