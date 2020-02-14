@@ -22,6 +22,18 @@ Context(SubtractionFunction){
 	};
 };
 
+Context(MultiplicationFunction){
+	Spec(ThreeTimesThree){
+		Assert::That(mult(3,3), Equals(9));
+	};
+	Spec(FourTimesTwo){
+		Assert::That(mult(4,2), Equals(8));
+	};
+	Spec(NegOneTimesFive){
+		Assert::That(mult(-1,5), Equals(-5));
+	};
+};
+
 int main() {
 	// Run all the tests defined above
 	return TestRunner::RunAllTests();
