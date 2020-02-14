@@ -87,5 +87,27 @@ int main(int argc, char** argv){
         }
     });
 
+    server.route("/div", [&](const request& req, response& res){
+        if(req.has_params({"x", "y"})){
+            std::string x_string = req.url_params.get("x");
+            std::string y_string = req.url_params.get("y");
+
+            int x = std::stoi(x_string);
+            int y = std::stoi(y_string);
+
+            int ans = dvd(x, y);
+            int rem = rvd(x, y);
+            json answer;
+            answer["ans"] = ans;
+            answer["rem"] = rem;
+
+            res.sendJSON(answer);
+
+        }
+        else{
+            res.sendError400();
+        }
+    });
+
     server.run();
 }
