@@ -51,6 +51,18 @@ Context(RemFunction){
 	};
 };
 
+Context(DivJsonFunction){
+
+	Spec(FiveDivTwo){
+		ucm::json ans;
+		ans["div"] = 2;
+		ans["rem"] = 1;
+
+		Assert::That(div(5,2), Equals(ans));
+	};
+};
+
+
 int main() {
 	// Run all the tests defined above
 	return TestRunner::RunAllTests();
