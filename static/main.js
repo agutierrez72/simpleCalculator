@@ -26,4 +26,19 @@ $(document).ready(function(){
             $("#ans").html(ans);
         });
     });
+
+    $("#mult").click(function(){
+        var lhs = $("#x").val();
+        var rhs = $("#y").val();
+
+        $.get("/mult", {"x": lhs, "y": rhs}, function(response){
+
+            var data = JSON.parse(response);
+            
+            var ans = data.ans;
+            
+            $("#ans").html(ans);
+        });
+
+    });
 });
