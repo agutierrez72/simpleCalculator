@@ -33,6 +33,23 @@ Context(MultiplicationFunction){
 		Assert::That(mult(-1,5), Equals(-5));
 	};
 };
+Context(DivisionFunction){
+	Spec(FiveDivThree){
+		Assert::That(dvd(5,3), Equals(1));
+	};
+	Spec(ThreeDivThree){
+		Assert::That(dvd(3,3), Equals(1));
+	};
+};
+
+Context(RemFunction){
+	Spec(TwoRemTwo){
+		Assert::That(rvd(2,2), Equals(0));
+	};
+	Spec(FiveRemThree){
+		Assert::That(rvd(5,3), Equals(2));
+	};
+};
 
 int main() {
 	// Run all the tests defined above
