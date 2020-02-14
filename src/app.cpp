@@ -62,6 +62,9 @@ int main(int argc, char** argv){
 
             res.sendJSON(answer);
         }
+        else{
+            res.sendError400();
+        }
     });
 
     server.run();

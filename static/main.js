@@ -12,4 +12,18 @@ $(document).ready(function(){
             $("#ans").html(ans);
         });
     });
+
+    $("#sub").click(function(){
+        var lhs = $("#x").val();
+        var rhs = $("#y").val();
+
+        $.get("/sub", {"x": lhs, "y": rhs}, function(response){
+
+            var data = JSON.parse(response);
+
+            var ans = data.ans;
+
+            $("#ans").html(ans);
+        });
+    });
 });
