@@ -58,7 +58,7 @@ Context(DivJsonFunction){
 		ans["div"] = 2;
 		ans["rem"] = 1;
 
-		Assert::That(div(5,2), Equals(ans));
+		Assert::That(division(5,2), Equals(ans));
 	};
 };
 
