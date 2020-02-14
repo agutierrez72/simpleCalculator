@@ -37,9 +37,10 @@ int main(int argc, char** argv){
 
             int ans = add(x, y);
 
-            std::string ans_string = std::to_string(ans);
-
-            res.sendHTML(ans_string);
+            json answer;
+            answer["ans"] = ans;
+            
+            res.sendJSON(answer);
         }
         else {
             res.sendError400();
