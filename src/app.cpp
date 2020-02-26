@@ -8,6 +8,8 @@ int main(int argc, char** argv){
 
     Server server(argc, argv);
 
+    server.renderHTML("/", "index.html");
+
     server.route("/sayHello", [&](const request& req, response& res){
         res.sendHTML("Hello World");
     });
@@ -35,11 +37,74 @@ int main(int argc, char** argv){
 
             int ans = add(x, y);
 
-            std::string ans_string = std::to_string(ans);
+            json answer;
+            answer["ans"] = ans;
 
-            res.sendHTML(ans_string);
+            res.sendJSON(answer);
         }
         else {
+            res.sendError400();
+        }
+    });
+
+    server.route("/sub", [&](const request& req, response& res){
+        if(req.has_params({"x", "y"})){
+            std::string x_string = req.url_params.get("x");
+            std::string y_string = req.url_params.get("y");
+
+            int x = std::stoi(x_string);
+            int y = std::stoi(y_string);
+
+            int ans = sub(x, y);
+
+            json answer;
+            answer["ans"] = ans;
+
+            res.sendJSON(answer);
+        }
+        else{
+            res.sendError400();
+        }
+    });
+
+    server.route("/mult", [&](const request& req, response& res){
+        if(req.has_params({"x", "y"})){
+            std::string x_string = req.url_params.get("x");
+            std::string y_string = req.url_params.get("y");
+
+            int x = std::stoi(x_string);
+            int y = std::stoi(y_string);
+
+            int ans = mult(x, y);
+
+            json answer;
+            answer["ans"] = ans;
+
+            res.sendJSON(answer);
+        }
+        else{
+            res.sendError400();
+        }
+    });
+
+    server.route("/div", [&](const request& req, response& res){
+        if(req.has_params({"x", "y"})){
+            std::string x_string = req.url_params.get("x");
+            std::string y_string = req.url_params.get("y");
+
+            int x = std::stoi(x_string);
+            int y = std::stoi(y_string);
+
+            int ans = dvd(x, y);
+            int rem = rvd(x, y);
+            json answer;
+            answer["ans"] = ans;
+            answer["rem"] = rem;
+
+            res.sendJSON(answer);
+
+        }
+        else{
             res.sendError400();
         }
     });
